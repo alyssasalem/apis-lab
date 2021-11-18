@@ -18,20 +18,6 @@ API_KEY = os.environ['TICKETMASTER_KEY']
 
 
 
-
-# {
-# "_links": {
-# "self": {
-# "href": "/discovery/v2/events?postalCode=94501&locale=*"
-# }
-# }
-# "page": {
-# "size": 20
-# "totalElements": 0
-# "totalPages": 0
-# "number": 0
-# }}
-
 @app.route('/')
 def homepage():
     """Show homepage."""
@@ -69,10 +55,10 @@ def find_afterparties():
     #
     # - Replace the empty list in `events` with the list of events from your
     #   search results
-
-    data = {'Test': ['This is just some test data'],
-            'page': {'totalElements': 1}}
-    events = []
+   
+    res = requests.get(url, params=payload)
+    data = res.json()
+    events = data['_embedded']['events']
 
     return render_template('search-results.html',
                            pformat=pformat,
