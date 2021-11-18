@@ -16,6 +16,22 @@ app.config['PRESERVE_CONTEXT_ON_EXCEPTION'] = True
 API_KEY = os.environ['TICKETMASTER_KEY']
 
 
+
+
+
+# {
+# "_links": {
+# "self": {
+# "href": "/discovery/v2/events?postalCode=94501&locale=*"
+# }
+# }
+# "page": {
+# "size": 20
+# "totalElements": 0
+# "totalPages": 0
+# "number": 0
+# }}
+
 @app.route('/')
 def homepage():
     """Show homepage."""
